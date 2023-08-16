@@ -11,15 +11,11 @@ import Schedule from "./pages/schedule";
 import Season from "./pages/season";
 import DetailsManager from "./components/content/detailsManager";
 
-import Anilist from "./pages/anilist";
-import AnilistDetailsManager from "./components/content/anilist details manager";
-
 function App() {
   return (
     <div className="text-gray-700 app font-Lato dark:text-gray-200">
       <Navbar></Navbar>
       <Routes>
-        <Route path="/anilist" element={<Anilist />} />
         <Route path="/" element={<Home />} />
         <Route path="/Anime" element={<Anime />} />
         <Route
@@ -33,11 +29,6 @@ function App() {
         <Route path="/schedule/:day/page/:number" element={<Schedule />} />
         <Route path="/season/page/:number/:year/:season" element={<Season />} />
         <Route path="/details/:id" element={<DetailsManager />} />
-        <Route
-          path="/anilist/details/:id"
-          element={<AnilistDetailsManager />}
-        />
-
         <Route path="/search/:value/page/:number" element={<Search />} />
         <Route path="/about" element={<About />} />
       </Routes>

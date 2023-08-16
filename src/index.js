@@ -6,10 +6,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { HomeFilterProvider, HomeTabsProvider } from "./hooks/HomeContext";
-import {
-  AnilistFilterProvider,
-  AnilistTabsProvider,
-} from "./hooks/AnilistContext";
 
 const redux = require("redux");
 
@@ -91,13 +87,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Provider store={store}>
       <HomeFilterProvider>
-        <AnilistFilterProvider>
-          <HomeTabsProvider>
-            <AnilistTabsProvider>
-              <App />
-            </AnilistTabsProvider>
-          </HomeTabsProvider>
-        </AnilistFilterProvider>
+        <HomeTabsProvider>
+          <App />
+        </HomeTabsProvider>
       </HomeFilterProvider>
     </Provider>
   </BrowserRouter>

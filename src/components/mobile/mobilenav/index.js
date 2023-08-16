@@ -26,7 +26,8 @@ export default function MobileNav(props) {
         <Link
           onClick={props.onClick}
           className="text-3xl font-semibold "
-          to="anilist"
+          target="_blank"
+          to="https://animedb-website-anilist.onrender.com/"
         >
           Anilist
         </Link>

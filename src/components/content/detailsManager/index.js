@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect } from "react";
 import Details from "../../../pages/details";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { useParams } from "react-router-dom";
@@ -15,6 +15,11 @@ export default function DetailsManager() {
 
   useEffect(() => {
     getFullDetailsAPI(params.id).then((res) => {
+      if (tabs.length !== 0 && tabs[0].animeId !== params.id)
+        return setTabs([
+          { animeId: params.id, id: uuid(), visiable: true, anime: res.data },
+        ]);
+
       if (tabs.length === 0)
         setTabs((prev) => [
           ...prev,
@@ -25,54 +30,6 @@ export default function DetailsManager() {
 
   return (
     <>
-      {/* <div>
-        <div className="overflow-x-auto flex w-full">
-          {tabs.map((rel) => (
-            <button
-              className="whitespace-nowrap py-2 px-4"
-              key={rel.id}
-              onClick={() => {
-                setTabs((prev) =>
-                  prev.map((ent) => {
-                    if (ent.id === rel.id) ent.visiable = true;
-                    else ent.visiable = false;
-
-                    return ent;
-                  })
-                );
-              }}
-            >
-              {rel.animeId.toString()}
-            </button>
-          ))}
-        </div>
-        {tabs.map((rel) => (
-          <div key={rel.id} className={rel.visiable ? "" : "hidden"}>
-            <div className="text-right pr-4">
-              <button
-                onClick={() => deleteTab(rel)}
-                className="py-1 mt-2 px-3 rounded-md bg-red-600 text-white mr-2"
-              >
-                Close
-              </button>
-              <button
-                onClick={() =>
-                  setTabs((prev) => [
-                    ...prev,
-                    { animeId: rel.animeId, id: uuid(), visiable: false },
-                  ])
-                }
-                className="py-1 mt-2 px-3 rounded-md bg-red-600 text-white mr-2"
-              >
-                add
-              </button>
-              <div>{uuid()}</div>
-            </div>
-
-            <Details animeId={rel.animeId} setTabs={setTabs} />
-          </div>
-        ))}
-      </div> */}
       <Tabs>
         <TabList
           id="tabs"
