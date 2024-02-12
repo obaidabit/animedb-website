@@ -12,7 +12,7 @@ import DetailsLoading from "../../components/details loading";
 import MobileContentNav from "../../components/mobile/mobilenav content";
 import Relation from "../../components/content/relation";
 
-export default function Details({ animeId, setTabs, deleteTab, id }) {
+export default function Details({ animeId, setTabs, tabs, deleteTab, id }) {
   const [data, setData] = useState([]);
   const [content, setContent] = useState(0);
   const [contentNav, setContentNav] = useState(true);
@@ -503,7 +503,11 @@ export default function Details({ animeId, setTabs, deleteTab, id }) {
               </div>
               <div>
                 {content === 8 && (
-                  <Relation animeId={animeId} setTabs={setTabs}></Relation>
+                  <Relation
+                    animeId={animeId}
+                    tabs={tabs}
+                    setTabs={setTabs}
+                  ></Relation>
                 )}
               </div>
               {isVisible && (

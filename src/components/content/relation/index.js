@@ -5,7 +5,7 @@ import "react-tabs/style/react-tabs.css";
 import { getFullDetailsAPI, getRelationsAPI, uuid } from "../../../config";
 import CardLoading from "../../card loading";
 
-export default function Relation({ animeId, setTabs }) {
+export default function Relation({ animeId, setTabs, tabs }) {
   const loading = useSelector((state) => state.cardLoading);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
@@ -36,6 +36,8 @@ export default function Relation({ animeId, setTabs }) {
   }
 
   function showSubRelated(rel) {
+    const existedAnime = tabs.find((an) => an.anime.mal_id === rel.mal_id);
+    if (existedAnime) return;
     setTabs((prev) => [
       ...prev,
       { animeId: rel.mal_id, id: uuid(), visiable: false, anime: rel },

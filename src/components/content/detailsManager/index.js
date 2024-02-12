@@ -53,6 +53,7 @@ export default function DetailsManager() {
               animeId={rel.animeId}
               deleteTab={deleteTab}
               setTabs={setTabs}
+              tabs={tabs}
             />
           </TabPanel>
         ))}
