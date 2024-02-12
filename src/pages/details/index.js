@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { getFullDetailsAPI } from "../../config";
 import { useSelector, useDispatch } from "react-redux";
 import Videos from "../../components/content/videos";
@@ -12,6 +12,15 @@ import DetailsLoading from "../../components/details loading";
 import MobileContentNav from "../../components/mobile/mobilenav content";
 import Relation from "../../components/content/relation";
 
+function viewDate(date) {
+  if (!date) return null;
+  const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+  });
+  return dateFormatter.format(new Date(date));
+}
 export default function Details({ animeId, setTabs, tabs, deleteTab, id }) {
   const [data, setData] = useState([]);
   const [content, setContent] = useState(0);
@@ -363,7 +372,10 @@ export default function Details({ animeId, setTabs, tabs, deleteTab, id }) {
                     <p className="flex gap-1 font-bold">
                       Aired :
                       <span className="font-normal dark:font-light">
-                        {data?.aired?.string}
+                        {viewDate(data?.aired?.from)}
+                        {data?.aired?.to
+                          ? " to " + viewDate(data?.aired?.to)
+                          : null}
                       </span>
                     </p>
                     <p className="flex gap-1 font-bold">
