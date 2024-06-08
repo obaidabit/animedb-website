@@ -324,14 +324,14 @@ export default function Details({ animeId, setTabs, tabs, deleteTab, id }) {
                         {data?.episodes ? data?.episodes : "unknown"}
                       </span>
                     </p>
-                    <p className="gap-1 font-bold text-center md:flex">
+                    {/* <p className="gap-1 font-bold text-center md:flex">
                       Theme :
                       <span className="font-normal dark:font-light">
                         {data?.themes
                           ? data?.themes.map((data) => data?.name).join(",")
                           : "unknown"}
                       </span>
-                    </p>
+                    </p> */}
                     <p className="flex gap-1 font-bold">
                       Duration :
                       <span className="font-normal dark:font-light">
