@@ -208,6 +208,12 @@ export default function Details({ animeId, setTabs, tabs, deleteTab, id }) {
                           {data?.title_japanese}
                         </span>
                       </p>
+                      <p className="text-md">
+                        Synonyms:{" "}
+                        <span className="ml-2 font-bold">
+                          {data?.title_synonyms?.toString()}
+                        </span>
+                      </p>
                     </div>
                     <button
                       className="z-10 bg-amber-200 px-3 py-2 dark:text-black rounded whitespace-nowrap"
