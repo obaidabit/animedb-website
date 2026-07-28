@@ -1,29 +1,31 @@
+const BASE_URL = "https://api.tenrai.org/v1";
+
 export const getUpcomingAPI = (num) => {
   return fetch(
-    `https://api.jikan.moe/v4/seasons/upcoming?page=${num}&sfw`
+    `${BASE_URL}/seasons/upcoming?page=${num}&sfw`
   ).then((res) => res.json().then((results) => Promise.resolve(results)));
 };
 
 export const getSeasonAPI = (year, season, num) => {
   return fetch(
-    `https://api.jikan.moe/v4/seasons/${year}/${season}?page=${num}&sfw`
+    `${BASE_URL}/seasons/${year}/${season}?page=${num}&sfw`
   ).then((res) => res.json().then((results) => Promise.resolve(results)));
 };
 
 export const getSeasonListAPI = () => {
-  return fetch(`https://api.jikan.moe/v4/seasons`).then((res) =>
+  return fetch(`${BASE_URL}/seasons`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getAiringAPI = () => {
-  return fetch(`https://api.jikan.moe/v4/seasons/now?sfw`).then((res) =>
+  return fetch(`${BASE_URL}/seasons/now?sfw`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getTopAPI = (num) => {
-  return fetch(`https://api.jikan.moe/v4/top/anime?page=${num}`)
+  return fetch(`${BASE_URL}/top/anime?page=${num}`)
     .then((res) => {
       if (res.ok) {
         return res.json();
@@ -47,7 +49,7 @@ export const getSearchAPI = (
   endDate
 ) => {
   return fetch(
-    `https://api.jikan.moe/v4/anime?${keyword ? `q=${keyword}` : ""}${
+    `${BASE_URL}/anime?${keyword ? `q=${keyword}` : ""}${
       num ? `&page=${num}` : ""
     }&sfw${order_by ? `&order_by=${order_by}` : ""}${
       sort ? `&sort=${sort}` : ""
@@ -79,90 +81,90 @@ export const getTodayAPI = () => {
     "Saturday",
   ];
   const d = new Date();
-  let day = weekday[d.getDay()];
-  return fetch(`https://api.jikan.moe/v4/schedules?filter=${day}`).then((res) =>
+  let day = weekday[d.getDay()].toLowerCase();
+  return fetch(`${BASE_URL}/schedules?filter=${day}`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getScheduleAPI = (day, num) => {
   return fetch(
-    `https://api.jikan.moe/v4/schedules?filter=${day}&page=${num}&sfw`
+    `${BASE_URL}/schedules?filter=${day.toLowerCase()}&page=${num}&sfw`
   ).then((res) => res.json().then((results) => Promise.resolve(results)));
 };
 
 export const getAnimeGenreAPI = () => {
-  return fetch(`https://api.jikan.moe/v4/genres/anime`).then((res) =>
+  return fetch(`${BASE_URL}/genres/anime`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getDetailsAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getFullDetailsAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/full`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/full`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 export const getVideosAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/videos`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/videos`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getEpisodesAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/episodes`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/episodes`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getReviewsAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/reviews`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/reviews`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getRecommendationsAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/recommendations`).then(
+  return fetch(`${BASE_URL}/anime/${id}/recommendations`).then(
     (res) => res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getRelationsAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/relations`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/relations`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getPicturesAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/pictures`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/pictures`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getStatAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/statistics`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/statistics`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getCharactersAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/characters`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/characters`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 export const getStaffAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/staff`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/staff`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };
 
 export const getMoreInfoAPI = (id) => {
-  return fetch(`https://api.jikan.moe/v4/anime/${id}/moreinfo`).then((res) =>
+  return fetch(`${BASE_URL}/anime/${id}/moreinfo`).then((res) =>
     res.json().then((results) => Promise.resolve(results))
   );
 };

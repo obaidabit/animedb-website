@@ -47,12 +47,12 @@ export default function Footer() {
                 <p className="mb-2">
                     Powered By{" "}
                     <a
-                        href="https://jikan.moe"
+                        href="https://tenrai.org"
                         target="_blank"
                         rel="noreferrer"
                         className="underline"
                     >
-                        JIKAN API
+                        Tenrai API
                     </a>
                 </p>
 

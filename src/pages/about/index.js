@@ -25,9 +25,9 @@ export default function About() {
                     className="underline"
                     rel="noreferrer"
                     target={"_blank"}
-                    href="https://dribbble.com/shots/14879802-MyAnimeList-Website-Redesign/attachments/6591878?mode=media"
+                    href="https://tenrai.org"
                 >
-                    Jikan FREE API
+                    Tenrai API (free)
                 </a>{" "}
                 .New routes and details page are still under construction
             </p>
