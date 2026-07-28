@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function CardList(props) {
   const [data, setData] = useState([]);
-  const [error, setError] = useState("false");
+  const [error, setError] = useState(null);
   const [all, setAll] = useState(false);
   const loading = useSelector((state) => state.cardLoading);
   const navigate = useNavigate();
@@ -153,7 +153,7 @@ export default function CardList(props) {
           </div>
         ) : (
           <div className="min-h-screen mt-10">
-            <h1 className="text-3xl font-bold text-center">{error}</h1>
+            <h1 className="text-3xl font-bold text-center">{error ? `${error}` : "No anime found"}</h1>
           </div>
         )}
       </div>
