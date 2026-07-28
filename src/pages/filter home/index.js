@@ -38,11 +38,6 @@ export default function Home() {
 
   function submitSearch(page) {
     dispatch({ type: "LOADING_CARD_TRUE" });
-    const formatter = new Intl.DateTimeFormat("en-US", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
     getSearchAPI(
       keywords,
       page ? page : currentPage,
@@ -52,12 +47,8 @@ export default function Home() {
       status,
       rating,
       genre,
-      startDate
-        ? formatter.format(new Date(startDate)).split("/").reverse().join("-")
-        : false,
-      endDate
-        ? formatter.format(new Date(endDate)).split("/").reverse().join("-")
-        : false
+      startDate || false,
+      endDate || false
     ).then((result) => {
       setNextPage(result.pagination.has_next_page);
       setTotalPages(result.pagination.last_visible_page);
